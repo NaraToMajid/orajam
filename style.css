@@ -1,0 +1,85 @@
+body {
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.clock {
+    width: 350px;
+    height: 350px;
+    background: white;
+    border-radius: 50%;
+    border: 10px solid #333;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Titik Tengah */
+.clock::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+/* Styling Angka */
+.number {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333;
+    padding: 18px;
+    box-sizing: border-box;
+}
+
+/* Garis Detik (Ticks) */
+.tick {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: #bbb;
+    top: 5px;
+    left: 50%;
+    transform-origin: 0 170px; /* Jari-jari jam minus sedikit offset */
+    transform: translateX(-50%);
+}
+
+.tick.large {
+    width: 4px;
+    height: 15px;
+    background: #333;
+}
+
+/* Jarum Jam */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    background: #333;
+    border-radius: 10px;
+    transform: translateX(-50%);
+}
+
+.hour { width: 8px; height: 75px; z-index: 3; }
+.min  { width: 5px; height: 110px; z-index: 4; }
+.sec  { 
+    width: 2px; 
+    height: 130px; 
+    background: #ff4757; 
+    z-index: 5;
+    transition: transform 0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+}
